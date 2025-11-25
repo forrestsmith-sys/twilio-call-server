@@ -21,6 +21,15 @@ def voice():
     response.append(dial)
     return Response(str(response), mimetype="text/xml")
 
+@app.route("/sms", methods=["POST"])
+def sms():
+    response = VoiceResponse()
+
+    # This returns a simple reply message
+    # (We can change this to anything you want)
+    response.message("Thanks for texting us! We will respond shortly.")
+
+    return Response(str(response), mimetype="text/xml")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=3000, debug=True)
